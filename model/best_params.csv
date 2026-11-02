@@ -1,0 +1,6 @@
+Model,Best params
+Logistic Regression,{'clf__C': 1}
+Decision Tree,"{'clf__max_depth': 10, 'clf__min_samples_leaf': 5}"
+KNN,"{'clf__n_neighbors': 9, 'clf__weights': 'distance'}"
+Naive Bayes,{'clf__var_smoothing': 0.001}
+SVM,"{'clf__C': 10, 'clf__gamma': 'scale'}"
