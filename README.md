@@ -4,8 +4,8 @@
 
 ## Links
 
-- **GitHub Repository:** <GITHUB_REPO_LINK>
-- **Live Streamlit App:** <STREAMLIT_APP_LINK>
+- **GitHub Repository:** https://github.com/krishnamalyalan8n-ui/2026aj05709-ml-spam-classifier
+- **Live Streamlit App:** https://2026aj05709-spam-classifier.streamlit.app/
 
 ## a. Problem Statement
 
