@@ -29,7 +29,11 @@ Feature groups:
 
 **Preprocessing:** 80/20 stratified train/test split (`random_state=5709`), giving 3,680 training rows and 921 test rows. Each model is a `Pipeline(log1p → StandardScaler → classifier)`. The log1p step reduces the heavy right skew of the frequency features, and scaling is fitted on the training data only. Hyperparameters are tuned per model with **5-fold GridSearchCV** (scoring = F1) on the training set. The held-out test set is saved as `test_data.csv`.
 
-## c. Repository Structure
+## c. GitHub Repository Link
+
+**Repository:** https://github.com/krishnamalyalan8n-ui/2026aj05709-ml-spam-classifier
+
+The repository contains the complete source code, `requirements.txt`, this README, the test data (`test_data.csv`) and the saved models for all five classifiers:
 
 ```
 ML-SPAM-CLASSIFIER/
@@ -89,21 +93,3 @@ Best hyperparameters found (see `model/best_params.csv`):
 | Naive Bayes | Highest recall (0.959), so it catches almost all spam, but the lowest precision (0.707), so it wrongly flags many good emails. This is because it assumes all features are independent, which is not true here (words like "free", "money" and "$" usually appear together), so it over-counts the spam evidence. It is still useful when missing spam is the costliest mistake. |
 | Support Vector Machine | Best on 5 of the 6 metrics (Accuracy 0.958, AUC 0.987, Precision 0.948, F1 0.946, MCC 0.911). The RBF kernel can draw curved decision boundaries, and C = 10 lets it fit the training data closely without overfitting the test data. It has the highest precision, so it loses the fewest good emails, but it is the slowest model to train. |
 | **Overall winner** | **Support Vector Machine** is the winner, with **KNN** a close second. For a spam filter, precision matters most, because sending a real email (for example a bank or job email) to the spam folder is worse than letting one spam email through, and SVM has the highest precision. |
-
-## Streamlit App Features
-
-- CSV upload of test data (falls back to the bundled `test_data.csv`), plus a sample CSV download button
-- Model selection dropdown (5 models)
-- All 6 evaluation metrics for the selected model
-- Confusion matrix heatmap and classification report
-- Side-by-side comparison table of all 5 models on the uploaded data
-- ROC curves for all models
-- Models are loaded from `model/*.joblib`, so nothing is retrained in the app
-
-## How to Run Locally
-
-```bash
-pip install -r requirements.txt
-python train_models.py     # optional: trained models are already saved in model/
-streamlit run app.py
-```
